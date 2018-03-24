@@ -1,22 +1,39 @@
 # keep only the elements that start with an a
 def select_elements_starting_with_a(array)
+  temp_value = []
+  array.map { |value| if value[0] == 'a' then temp_value.push(value) end }
+  temp_value
 end
+
 
 # keep only the elements that start with a vowel
 def select_elements_starting_with_vowel(array)
+  # temp_value = []
+  # vowels = ['a', 'e', 'i', 'o', 'u']
+  # array.map { |let| if vowels.include? let[0] then temp_value.push(let) end }
+  # temp_value
+
+  array.delete_if { |elem| elem !~ /^[aeiou]/ }
+
+  # array.each do |elem|
+  #   array.delete(elem) if elem !~ /^[aeiou]/
+  # end
 end
 
 # remove instances of nil (but NOT false) from an array
 def remove_nils_from_array(array)
+  array.delete_if { |elem| elem == nil }
 end
 
 # remove instances of nil AND false from an array
 def remove_nils_and_false_from_array(array)
+  array.delete_if { |elem| elem == nil || elem == false }
 end
 
 # don't reverse the array, but reverse every word inside it. e.g.
 # ['dog', 'monkey'] becomes ['god', 'yeknom']
 def reverse_every_element_in_array(array)
+  array.each { |elem| elem.reverse! }
 end
 
 # given an array of student names, like ['Bob', 'Dave', 'Clive']
@@ -24,26 +41,40 @@ end
 # [['Bob', 'Clive'], ['Bob', 'Dave'], ['Clive', 'Dave']]
 # make sure you don't have the same pairing twice,
 def every_possible_pairing_of_students(array)
+
+    sorted = array.map { |pair| pair.sort }.sort_by { |pair| [pair.first, pair.last] }
+    p sorted
+  # end
 end
 
 # discard the first 3 elements of an array,
 # e.g. [1, 2, 3, 4, 5, 6] becomes [4, 5, 6]
 def all_elements_except_first_3(array)
+  3.times { array.shift }
+  array
 end
 
 # add an element to the beginning of an array
 def add_element_to_beginning_of_array(array, element)
+  array.unshift(element)
 end
 
 # sort an array of words by their last letter, e.g.
 # ['sky', 'puma', 'maker'] becomes ['puma', 'maker', 'sky']
 def array_sort_by_last_letter_of_word(array)
+  array.each { |word| word.reverse! }
+  array.sort!
+  array.each { |word| word.reverse! }
 end
 
 # cut strings in half, and return the first half, e.g.
 # 'banana' becomes 'ban'. If the string is an odd number of letters
 # round up - so 'apple' becomes 'app'
 def get_first_half_of_string(string)
+  remainder = true if string.length % 2 == 1
+  half_string_length = string.length / 2
+  half_string_length += 1 if remainder == true
+  new_string = string[0...half_string_length]
 end
 
 # turn a positive integer into a negative integer. A negative integer
