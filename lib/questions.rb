@@ -80,6 +80,8 @@ end
 # turn a positive integer into a negative integer. A negative integer
 # stays negative
 def make_numbers_negative(number)
+  foo = '-' + number.to_s if number > 0
+  if number > 0 then foo.to_i else number end
 end
 
 # turn an array of numbers into two arrays of numbers, one an array of
