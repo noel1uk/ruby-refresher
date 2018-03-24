@@ -8,16 +8,7 @@ end
 
 # keep only the elements that start with a vowel
 def select_elements_starting_with_vowel(array)
-  # temp_value = []
-  # vowels = ['a', 'e', 'i', 'o', 'u']
-  # array.map { |let| if vowels.include? let[0] then temp_value.push(let) end }
-  # temp_value
-
   array.delete_if { |elem| elem !~ /^[aeiou]/ }
-
-  # array.each do |elem|
-  #   array.delete(elem) if elem !~ /^[aeiou]/
-  # end
 end
 
 # remove instances of nil (but NOT false) from an array
@@ -41,9 +32,7 @@ end
 # [['Bob', 'Clive'], ['Bob', 'Dave'], ['Clive', 'Dave']]
 # make sure you don't have the same pairing twice,
 def every_possible_pairing_of_students(array)
-
     sorted = array.map { |pair| pair.sort }.sort_by { |pair| [pair.first, pair.last] }
-    p sorted
   # end
 end
 
@@ -89,6 +78,9 @@ end
 # even numbers come first
 # so [1, 2, 3, 4, 5, 6] becomes [[2, 4, 6], [1, 3, 5]]
 def separate_array_into_even_and_odd_numbers(array)
+  evens, odds, result = [], [], []
+  array.each { |num| num % 2 == 0 ? evens.push(num) : odds.push(num) }
+  result.push evens; result.push odds
 end
 
 # count the numbers of elements in an element which are palindromes
